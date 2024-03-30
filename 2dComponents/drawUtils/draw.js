@@ -1,6 +1,13 @@
 
 export default function draw(p5) {
     return () => {
-        p5.background(255, 0, 0);
+        p5.clear()
+        console.log(p5);
+        p5.rect(300, 20, 150, 150);
+        // p5.noLoop()
+        p5.push()
+        p5.fill(255, 204, 0);
+        p5.circle(50 + p5.frameCount, 50, 25);
+        p5.pop()
     };
 }
