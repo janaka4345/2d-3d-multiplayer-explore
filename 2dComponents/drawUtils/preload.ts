@@ -1,5 +1,5 @@
 import type p5 from 'p5'
-import { useBackgroundImageStore } from '../2dStore/backgroundImageStore'
+import { useBackgroundImageStore } from '../../2dStore/backgroundImageStore'
 
 export default function preload(p5: p5) {
     return () => {
