@@ -1,5 +1,5 @@
-import { P5CanvasInstance } from "@p5-wrapper/react";
+import p5 from 'p5'
 
-export default function preload(p5:P5CanvasInstance) {
-
+export default function preload(p5: p5) {
+    return () => {}
 }
