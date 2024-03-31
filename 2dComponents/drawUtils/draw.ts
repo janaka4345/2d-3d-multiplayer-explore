@@ -1,13 +1,12 @@
-
-export default function draw(p5) {
+import { P5CanvasInstance } from "@p5-wrapper/react";
+export default function draw(p5:P5CanvasInstance) {
     return () => {
         p5.clear()
-        console.log(p5);
         p5.rect(300, 20, 150, 150);
-        // p5.noLoop()
         p5.push()
         p5.fill(255, 204, 0);
         p5.circle(50 + p5.frameCount, 50, 25);
         p5.pop()
+        // p5.noLoop()
     };
 }

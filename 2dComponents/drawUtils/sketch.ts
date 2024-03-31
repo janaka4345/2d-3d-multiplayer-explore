@@ -3,7 +3,9 @@ import mousePressed from "./mousePressed";
 import preload from "./preload";
 import setup from "./setup";
 
-function sketch(p5) {
+import { type Sketch } from "@p5-wrapper/react";
+
+const sketch:Sketch=(p5)=> {
     p5.preload = preload(p5);
     p5.setup = setup(p5);
     p5.draw = draw(p5);
