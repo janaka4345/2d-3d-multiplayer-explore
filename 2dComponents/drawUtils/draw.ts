@@ -4,7 +4,7 @@ import backgroundParallax from '../drawings/backgroundParallax'
 
 export default function draw(p5: p5) {
     return () => {
-        // p5.clear()
+        p5.clear()
 
         // testDraw(p5)
         backgroundParallax(p5)
