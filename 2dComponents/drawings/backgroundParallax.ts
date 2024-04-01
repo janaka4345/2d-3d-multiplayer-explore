@@ -1,9 +1,11 @@
 import type p5 from 'p5'
 import { useBackgroundImageStore } from '../../2dStore/backgroundImageStore'
 
+let images = useBackgroundImageStore.getState().images
 export default function backgroundParallax(p5: p5) {
-    const { images } = useBackgroundImageStore.getState()
-
+    if (!images.layer1) {
+        images = useBackgroundImageStore.getState().images
+    }
     if (images.layer1) {
         p5.image(
             images.layer1,

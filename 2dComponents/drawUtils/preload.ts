@@ -5,7 +5,7 @@ import { useSpriteStore } from '@/2dStore/spriteStore'
 export default function preload(p5: p5) {
     return () => {
         loadBackgroundLayers(p5)
-        loadSprites(p5)
+        // loadSprites(p5)
     }
 }
 

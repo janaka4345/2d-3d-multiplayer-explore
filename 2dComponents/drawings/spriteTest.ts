@@ -1,9 +1,12 @@
 import { useSpriteStore } from '@/2dStore/spriteStore'
 import type p5 from 'p5'
 
-const uvMap = useSpriteStore.getState().uvSprite
-
+let uvMap: p5.Image | null
 export default function spriteTest(p5: p5) {
+    if (!uvMap) {
+        uvMap = useSpriteStore.getState().uvSprite
+    }
+
     p5.push()
     p5.stroke(0, 0, 0)
     if (uvMap) {
