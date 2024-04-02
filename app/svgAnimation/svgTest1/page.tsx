@@ -12,6 +12,7 @@ export default function page() {
         visible: {
             pathLength: 1,
             fill: 'rgba(255, 255, 255, 1)',
+            transition: { duration: 10 },
         },
     }
     const first = useRef(null)
