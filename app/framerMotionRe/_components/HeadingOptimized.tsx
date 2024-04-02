@@ -2,8 +2,9 @@
 
 // import { motion } from 'framer-motion'
 
-import { m as motion } from 'framer-motion'
-import { LazyMotion, domAnimation } from 'framer-motion'
+// import { m as motion } from 'framer-motion'
+import { domAnimation } from 'framer-motion'
+import { LazyMotion, m as motion } from 'framer-motion'
 
 const variants = {
     hidden: {
@@ -17,9 +18,11 @@ const variants = {
     },
 }
 export default function Heading() {
+    const loadFeatures = () => import('./features').then((res) => res.default)
     return (
         <>
-            <LazyMotion features={domAnimation}>
+            {console.log('started')}
+            <LazyMotion features={loadFeatures}>
                 <motion.div
                     variants={variants}
                     initial="hidden"
@@ -45,6 +48,7 @@ export default function Heading() {
                     sup
                 </motion.div>
             </LazyMotion>
+            {console.log('ended')}
         </>
     )
 }
