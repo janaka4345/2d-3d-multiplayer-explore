@@ -2,4 +2,5 @@
  
 export type IconName =
 	| "Frame 1"
+	| "layered-waves-haikei"
 	| "lucide/camera";
