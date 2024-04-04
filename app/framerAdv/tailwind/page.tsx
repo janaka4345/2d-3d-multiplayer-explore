@@ -2,8 +2,6 @@
 import { motion } from 'framer-motion'
 
 export default function page() {
-    // const isDesktop = useMediaQuery({ query: '(min-width: 768px)' })
-    // const isMobile = useMediaQuery({ query: 'not (min-width: 768px)' })
     const divVariant = {
         hidden: { opacity: 0, scale: 'var(--scale-from)' },
         visible: {
