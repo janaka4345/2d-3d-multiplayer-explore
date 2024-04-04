@@ -1,3 +1,4 @@
+'use client'
 import { Button } from '@/components/ui/button'
 import {
     Dialog,
@@ -10,9 +11,19 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useAnimate } from 'framer-motion'
+import { useEffect } from 'react'
 export default function page() {
+    const [scope, animate] = useAnimate()
+    useEffect(() => {
+        animate(scope.current, { x: 100 }, { duration: 4 })
+
+        return () => {}
+    }, [])
+
     return (
         <div>
+            <div ref={scope} className="bg-red-500 w-52 h-52"></div>
             <Dialog>
                 <DialogTrigger asChild>
                     <Button variant="outline">Edit Profile</Button>
