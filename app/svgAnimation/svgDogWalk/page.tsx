@@ -1,35 +1,40 @@
 'use client'
-import Image from 'next/image'
-// import { Icon } from '@/components/icon'
+import { Icon } from '@/components/icon'
 import { useEffect, useRef } from 'react'
+// import * as background from '@/public/dogWalk/dogWalk/background.svg'
 
 export default function page() {
     const backgroundSvgRef = useRef(null)
+    const dogSvgRef = useRef(null)
     useEffect(() => {
         console.log(backgroundSvgRef)
+        console.log(dogSvgRef)
+        // console.log(background.default.src)
 
         return () => {}
     }, [])
 
     return (
         <div>
-            {/* <Icon
+            <Icon
                 ref={dogSvgRef}
-                className="h-52 w-52"
-                name="dogWalk/dog-walk"
-            /> */}
-            <svg
+                className="h-52 w-52 "
+                name="dogWalk/dogWalk/dog-walk"
+            />
+            {/* <svg
                 ref={backgroundSvgRef}
                 xmlns="http://www.w3.org/2000/svg"
                 xmlSpace="preserve"
-                width="1200.8"
+                width="300"
                 height="350"
+                viewBox="900,0,300,350"
+                className=""
             >
                 <path
                     fill="#55C1E7"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M-12.1-2.52h1242v233.91h-1242z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                 />
                 <path fill="#919396" d="M901.38 60.11h63.41v169.48h-63.41z" />
                 <g fill="#FFF">
@@ -309,7 +314,7 @@ export default function page() {
                 <g fill="#808083">
                     <path d="M194.34 31.92h5.75v185.47h-5.75zM205.86 31.92h5.75v185.47h-5.75zM217.37 31.92h5.76v185.47h-5.76zM228.88 31.92h5.76v185.47h-5.76zM240.4 31.92h5.76v185.47h-5.76z" />
                 </g>
-            </svg>
+            </svg> */}
         </div>
     )
 }
