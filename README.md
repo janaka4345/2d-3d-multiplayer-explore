@@ -14,3 +14,5 @@
 -   svg with GSAP
 -   svg with framer motion
 -   svg with refs and animation loop
+
+import svg for dynamic animations with (https://react-svgr.com/)

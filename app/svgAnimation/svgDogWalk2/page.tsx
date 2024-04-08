@@ -1,5 +1,6 @@
 'use client'
-import { MySvg } from '@/components/Svg'
+
+import Memo from '@/components/Svg'
 import { useEffect, useRef } from 'react'
 // import { Component } from 'react'
 // import ReactComponent from '@/public/layered-waves-haikei.svg'
@@ -7,14 +8,14 @@ import { useEffect, useRef } from 'react'
 export default function page() {
     const useSvg = useRef(null)
     useEffect(() => {
-        console.log(MySvg)
+        console.log(Memo)
 
         return () => {}
     }, [])
 
     return (
         <div>
-            <MySvg />
+            <Memo />
             {/* <svg className="">
                 <use
                     ref={useSvg}
