@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { SVGProps, Ref, forwardRef, memo } from 'react'
 const DogWalk = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
     <svg

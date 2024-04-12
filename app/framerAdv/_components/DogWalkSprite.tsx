@@ -1,26 +1,23 @@
 'use client'
 import { useAnimationFrame } from 'framer-motion'
-import { useRef } from 'react'
-import DogWalkMemo from './DogSvgOPtimized'
-import { Button } from '@/components/ui/button'
+import { Suspense, lazy, useRef } from 'react'
+// import DogWalkMemo from './DogSvgOPtimized'
 
+const DogWalkMemo = lazy(() => import('../_components/DogSvgOPtimized'))
 const DogWalkSprite = () => {
     const svgRef = useRef<SVGSVGElement | null>(null)
-    const handleClick = () => {
-        console.log(svgRef)
 
-        // svgRef.current.setAttribute('viewport', `50 50  244  157`)
-    }
     useAnimationFrame((time, delta) => {
         const T = Math.floor(time * 0.003) % 9
-        // console.log(135.18 * T)
-        svgRef.current.setAttribute('viewBox', `0 ${135.18 * T} 212 135.18`)
-        // console.log(svgRef)
+        svgRef?.current?.setAttribute('viewBox', `0 ${135.18 * T} 212 135.18`)
     })
     return (
         <>
-            {/* <Button onClick={handleClick}>click</Button> */}
-            <DogWalkMemo ref={svgRef} width={212} height={135.18} />
+            {DogWalkMemo && (
+                <Suspense fallback={<h1>loading ...</h1>}>
+                    <DogWalkMemo ref={svgRef} width={212} height={135.18} />
+                </Suspense>
+            )}
         </>
     )
 }
