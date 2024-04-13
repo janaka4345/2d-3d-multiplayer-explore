@@ -13,9 +13,19 @@ const page = () => {
                 { cx: 100 },
                 { duration: 5 }
             )
-            animate(
+            await animate(
                 svgRef.current.children.circle2,
                 { cy: 500 },
+                { duration: 5 }
+            )
+            await animate(
+                svgRef.current.children.circle1,
+                { cx: 200 },
+                { duration: 5 }
+            )
+            await animate(
+                svgRef.current.children.circle2,
+                { cx: 200, cy: 31.5 },
                 { duration: 5 }
             )
         }
