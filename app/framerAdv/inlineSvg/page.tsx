@@ -29,6 +29,7 @@ const page = () => {
                 { duration: 5 }
             )
         }
+
         t()
     })
 
