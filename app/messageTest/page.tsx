@@ -1,5 +1,6 @@
+'use client'
 import { socket } from "@/socket";
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 
 const page = () => {
     const [isConnected, setIsConnected] = useState(false);
@@ -11,8 +12,6 @@ const page = () => {
     useEffect(() => {
         if (socket.connected) {
             onConnect();
-
-
         }
 
         function onConnect() {
@@ -47,8 +46,10 @@ const page = () => {
             })
         };
     }, []);
-    const handleMessage = () => {
-        console.log({ id, message });
+    const handleMessage: MouseEventHandler<HTMLButtonElement> = (e) => {
+        e.preventDefault()
+        // console.log({ id, message });
+        socket.emit('privateMessage', { id, message, senderId: socket.id })
 
     }
 
@@ -56,13 +57,15 @@ const page = () => {
         <div>
             <p>Status: {isConnected ? "connected" : "disconnected"}</p>
             <p>Transport: {transport}</p>
+            <p>connectId: {connectId}</p>
             <form className=" flex flex-col gap-1">
                 <input className="border border-black w-1/2" type="text" id="id" placeholder="send to id" required onChange={e => setId(e.target.value)} /> <br />
                 <input className="border border-black w-1/2" type="text" id="message" placeholder="message" required onChange={e => setMessage(e.target.value)} /> <br />
-                <button id="join" type="submit" onClick={handleMessage}>Join</button>
+                <button id="join" type="submit" onClick={handleMessage}>Send Message</button>
             </form>
             <br />
             <br />
+            <button onClick={() => setData([])}>clear pre</button>
             <pre>{JSON.stringify(data, null, 2)}</pre>
 
         </div>

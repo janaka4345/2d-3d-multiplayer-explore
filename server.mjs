@@ -53,6 +53,12 @@ app.prepare().then(() => {
 
         })
 
+        socket.on('privateMessage', data => {
+            console.log('privateMessage:', data);
+            io.to(data.id).emit("message", data)
+
+        })
+
     })
 
     httpServer
