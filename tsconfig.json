@@ -26,7 +26,8 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "components/iconJsx.jsx"
+        "components/iconJsx.jsx",
+        "socket.js"
     ],
     "exclude": ["node_modules"]
 }

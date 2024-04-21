@@ -6,7 +6,7 @@ import { socket } from "@/socket";
 const page = () => {
     const [isConnected, setIsConnected] = useState(false);
     const [data, setData] = useState([]);
-    const [name, setName] = useState<string>();
+    const [name, setName] = useState<string>('john');
     const [room, setRoom] = useState<string>();
     const [message, setMessage] = useState<string>();
     const [transport, setTransport] = useState("N/A");
@@ -34,25 +34,30 @@ const page = () => {
         socket.on("disconnect", onDisconnect);
 
         socket.on('message', newData => {
+            console.log(newData);
             setData(data => [...data, newData])
         })
 
         return () => {
             socket.off("connect", onConnect);
             socket.off("disconnect", onDisconnect);
+            socket.off('message', newData => {
+                console.log(newData);
+                setData(data => [...data, newData])
+            })
         };
     }, []);
 
     const handleJoin: MouseEventHandler<HTMLButtonElement> = (e) => {
         e.preventDefault()
         console.log({ name, room });
-        socket.emit('join', { name, room })
+        // socket.emit('join', { name, room })
 
     }
     const handleSend: MouseEventHandler<HTMLButtonElement> = (e) => {
         e.preventDefault()
         console.log({ message });
-        socket.emit('message', { message })
+        socket.emit('message', { message, id: socket.id })
 
     }
 

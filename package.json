@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": " node server.mjs",
+    "dev": " nodemon server.mjs",
     "build": "next build",
-    "start": "NODE_ENV=production node server.mjs",
+    "start": "NODE_ENV=production nodemon server.mjs",
     "lint": "next lint",
     "build:icons": "npx tsx ./build-icons.mts"
   },
@@ -44,6 +44,7 @@
     "fs-extra": "^11.2.0",
     "glob": "^10.3.12",
     "node-html-parser": "^6.1.13",
+    "nodemon": "^3.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5",
