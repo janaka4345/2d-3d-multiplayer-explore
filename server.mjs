@@ -26,21 +26,33 @@ app.prepare().then(() => {
     io.on('connection', (socket) => {
 
         //to login user only
-        socket.emit('message', 'welcome to the server')
+        socket.emit('message', message(ADMIN, 'welcome to the app'))
 
         //to other login users only
-        socket.broadcast.emit('message', `${socket.id} joinesd the server`)
+        socket.broadcast.emit('message', message(ADMIN, `${socket.id} joined the app`))
 
         //listening for messages
         socket.on('message', data => {
             console.log(data);
-            io.emit('message', data)
+            io.emit('message', message(data.id, data.message))
         })
 
         //listening for rooms
-        socket.on('join', data => {
+        socket.on('generalRoom', data => {
+            socket.join("generalRoom")
             console.log(data);
         })
+        socket.on('roorms', data => {
+            console.log('roorms');
+            console.log(socket);
+            // io.to("generalRoom").emit(message('room', data))
+        })
+        socket.on('singlePerson', data => {
+            console.log('singlePerson:', data);
+            io.to(data.name).emit("message", data.room)
+
+        })
+
     })
 
     httpServer

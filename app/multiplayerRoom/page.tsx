@@ -14,6 +14,8 @@ const page = () => {
     useEffect(() => {
         if (socket.connected) {
             onConnect();
+            console.log(socket.id);
+
         }
 
         function onConnect() {
@@ -51,14 +53,19 @@ const page = () => {
     const handleJoin: MouseEventHandler<HTMLButtonElement> = (e) => {
         e.preventDefault()
         console.log({ name, room });
-        // socket.emit('join', { name, room })
+        socket.emit('singlePerson', { name, room })
 
     }
     const handleSend: MouseEventHandler<HTMLButtonElement> = (e) => {
         e.preventDefault()
         console.log({ message });
+
         socket.emit('message', { message, id: socket.id })
 
+    }
+
+    const handleRoomJoin = () => {
+        socket.emit('roorms', { message, id: socket.id })
     }
 
     return (
@@ -66,8 +73,8 @@ const page = () => {
             <p>Status: {isConnected ? "connected" : "disconnected"}</p>
             <p>Transport: {transport}</p>
             <form className=" flex flex-col gap-1">
-                <input className="border border-black w-1/2" type="text" id="name" maxLength={8} placeholder="Your name" size={5} required onChange={e => setName(e.target.value)} /> <br />
-                <input className="border border-black w-1/2" type="text" id="room" placeholder="Chat room" size={5} required onChange={e => setRoom(e.target.value)} /> <br />
+                <input className="border border-black w-1/2" type="text" id="name" maxLength={50} placeholder="send id" size={50} required onChange={e => setName(e.target.value)} /> <br />
+                <input className="border border-black w-1/2" type="text" id="room" placeholder="message" size={5} required onChange={e => setRoom(e.target.value)} /> <br />
                 <button id="join" type="submit" onClick={handleJoin}>Join</button>
             </form>
             <br />
@@ -77,6 +84,7 @@ const page = () => {
                 <input className="border border-black w-1/2" type="text" id="message" placeholder="Your message" required onChange={e => setMessage(e.target.value)} /> <br />
                 <button type="submit" onClick={handleSend}>Send</button>
             </form>
+            <button onClick={handleRoomJoin}>joined room</button>
         </div>
     );
 }
