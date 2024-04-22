@@ -6,6 +6,7 @@ const page = () => {
     const [isConnected, setIsConnected] = useState(false);
     const [connectId, setConnectId] = useState('');
     const [id, setId] = useState('');
+    const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
     const [data, setData] = useState([]);
     const [transport, setTransport] = useState("N/A");
@@ -33,7 +34,7 @@ const page = () => {
         socket.on("disconnect", onDisconnect);
 
         socket.on('message', newData => {
-            console.log(newData);
+            // console.log(newData);
             setData(data => [...data, newData])
         })
 
@@ -49,7 +50,26 @@ const page = () => {
     const handleMessage: MouseEventHandler<HTMLButtonElement> = (e) => {
         e.preventDefault()
         // console.log({ id, message });
-        socket.emit('privateMessage', { id, message, senderId: socket.id })
+        if (id != "") {
+            return socket.emit('privateMessage', { id, message, senderId: socket.id })
+        }
+        socket.emit('message', { message, senderId: socket.id })
+
+    }
+    const handleJoin: MouseEventHandler<HTMLButtonElement> = (e) => {
+        e.preventDefault()
+        // console.log({ room });
+        socket.emit('join room', { room, senderId: socket.id })
+
+    }
+
+    const callback: MouseEventHandler<HTMLButtonElement> = (e) => {
+        e.preventDefault()
+        console.log({ message });
+        socket.emit('callbackMessage', message, (m) => {
+            console.log('m is sent to the server', m);
+
+        })
 
     }
 
@@ -65,7 +85,23 @@ const page = () => {
             </form>
             <br />
             <br />
+            <form className=" flex flex-col gap-1">
+                <input className="border border-black w-1/2" type="text" id="join" placeholder="join room" required onChange={e => setRoom(e.target.value)} /> <br />
+
+                <button id="join2" type="submit" onClick={handleJoin}> Join</button>
+            </form>
+            <br />
+            <br />
             <button onClick={() => setData([])}>clear pre</button>
+
+            <form className=" flex flex-col gap-1">
+                <input className="border border-black w-1/2" type="text" id="callback" placeholder="callback message" required onChange={e => setMessage(e.target.value)} /> <br />
+
+                <button id="join4" type="submit" onClick={callback}> callback</button>
+            </form>
+            <br />
+            <br />
+
             <pre>{JSON.stringify(data, null, 2)}</pre>
 
         </div>

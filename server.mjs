@@ -26,15 +26,15 @@ app.prepare().then(() => {
     io.on('connection', (socket) => {
 
         //to login user only
-        socket.emit('message', message(ADMIN, 'welcome to the app'))
+        // socket.emit('message', message(ADMIN, 'welcome to the app'))
 
         //to other login users only
-        socket.broadcast.emit('message', message(ADMIN, `${socket.id} joined the app`))
+        // socket.broadcast.emit('message', message(ADMIN, `${socket.id} joined the app`))
 
         //listening for messages
         socket.on('message', data => {
             console.log(data);
-            io.emit('message', message(data.id, data.message))
+            socket.broadcast.emit('message', message(data.id, data.message))
         })
 
         //listening for rooms
@@ -45,17 +45,28 @@ app.prepare().then(() => {
         socket.on('roorms', data => {
             console.log('roorms');
             console.log(socket);
-            // io.to("generalRoom").emit(message('room', data))
         })
         socket.on('singlePerson', data => {
             console.log('singlePerson:', data);
-            io.to(data.name).emit("message", data.room)
+            socket.to(data.name).emit("message", data.room)
+
+        })
+        socket.on('join room', data => {
+            console.log(data);
+            socket.join(data.room)
+            // io.to(data.id).emit("message", data)
 
         })
 
         socket.on('privateMessage', data => {
             console.log('privateMessage:', data);
-            io.to(data.id).emit("message", data)
+            socket.to(data.id).emit("message", data)
+
+        })
+        socket.on('callbackMessage', (data, callback) => {
+            console.log('callbackMessage:', data);
+            callback('supppp')
+            // socket.to(data.id).emit("message", data)
 
         })
 
