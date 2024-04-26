@@ -6,6 +6,8 @@ export default function Home() {
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <Link href='multiplayerRoom'>chat room</Link>
             <Link href='messageTest'>chat messageTest</Link>
+            <Link href='3dWorld'>3d Character move</Link>
+
             <Canvas />
         </main>
     )
