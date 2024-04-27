@@ -5,6 +5,7 @@ import { Perf } from 'r3f-perf'
 import Experience from "./Experience"
 import Experience2 from "./Experience2"
 import ExperiencePhysics from "./ExperiencePhysics"
+import { Vector3 } from "three"
 
 
 const World = () => {
