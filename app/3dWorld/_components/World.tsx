@@ -10,6 +10,8 @@ import ExperienceCharacter from "./ExperienceCharacter"
 import ExperienceCharacter2 from "./ExperienceCharacter2"
 import ExperienceCharacter3 from "./ExperienceCharacter3"
 import { useMemo, useState } from "react"
+import FlyControlsDem from "./FlyControlsDem"
+import { Physics } from "@react-three/rapier"
 
 
 const World = () => {
@@ -30,19 +32,21 @@ const World = () => {
     ], [])
     return (
         <>
-            <button onClick={() => setState(prev => !prev)}>click</button>
+            {/* <button onClick={() => setState(prev => !prev)}>click</button> */}
             <KeyboardControls map={map}>
                 <Canvas shadows style={{ width: '100svw', height: '100svh' }}>
-                    <Perf position="top-right" />
-                    <OrbitControls />
-                    <directionalLight intensity={2} castShadow position={[5, 5, 5]} />
-                    <ambientLight />
-                    {/* <Experience /> */}
-                    {/* <Experience2 /> */}
-                    {/* <ExperiencePhysics /> */}
-                    {/* {state && <ExperienceCharacter />} */}
-                    {state && <ExperienceCharacter2 />}
-                    {/* {state && <ExperienceCharacter3 />} */}
+                    <Physics debug>
+                        <Perf position="top-right" />
+                        <OrbitControls />
+                        <directionalLight intensity={2} castShadow position={[5, 5, 5]} />
+                        <ambientLight />
+                        {/* <Experience /> */}
+                        {/* <Experience2 /> */}
+                        {/* <ExperiencePhysics /> */}
+                        {/* {state && <ExperienceCharacter />} */}
+                        {/* {state && <ExperienceCharacter2 />} */}
+                        {/* {state && <ExperienceCharacter3 />} */}
+                        <FlyControlsDem /></Physics>
                 </Canvas>
             </KeyboardControls></>
     )

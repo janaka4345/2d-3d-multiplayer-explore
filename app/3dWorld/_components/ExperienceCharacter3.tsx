@@ -49,21 +49,21 @@ const ExperienceCharacter = () => {
 
     return (
         <>
-            <Physics debug >
-                <RigidBody type="fixed" friction={1} restitution={0}>
 
-                    <Plane />
-                </RigidBody>
-                <RigidBody friction={0.4} restitution={0.5} position={[0, 1, 0]}>
-                    <Cube />
-                </RigidBody>
-                <RigidBody type="kinematicPosition" ref={characterRef} friction={1} restitution={0} position={[0, 0.5, 0]} colliders={false}>
-                    <Character castShadow position={[0, -1.5, 0]} />
-                    <CapsuleCollider args={[1.05, 0.5]} />
-                    {/* <CuboidCollider args={[0.5, 0.5, 0.5]} /> */}
-                </RigidBody>
+            <RigidBody type="fixed" friction={1} restitution={0}>
 
-            </Physics>
+                <Plane />
+            </RigidBody>
+            <RigidBody friction={0.4} restitution={0.5} position={[0, 1, 0]}>
+                <Cube />
+            </RigidBody>
+            <RigidBody type="kinematicPosition" ref={characterRef} friction={1} restitution={0} position={[0, 0.5, 0]} colliders={false}>
+                <Character castShadow position={[0, -1.5, 0]} />
+                <CapsuleCollider args={[1.05, 0.5]} />
+                {/* <CuboidCollider args={[0.5, 0.5, 0.5]} /> */}
+            </RigidBody>
+
+
 
         </>
     )

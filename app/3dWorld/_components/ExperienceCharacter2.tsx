@@ -80,20 +80,20 @@ const ExperienceCharacter = () => {
     }, [])
     return (
         <>
-            <Physics debug >
-                <RigidBody friction={1} restitution={0}>
 
-                    <Plane />
-                </RigidBody>
-                {/* <RigidBody friction={0.4} restitution={0.5} position={[0, 1, 0]}>
+            <RigidBody friction={1} restitution={0}>
+
+                <Plane />
+            </RigidBody>
+            {/* <RigidBody friction={0.4} restitution={0.5} position={[0, 1, 0]}>
                     <Cube />
                 </RigidBody> */}
-                <RigidBody ref={characterRef} type="kinematicPosition" friction={0.7} restitution={1} position={[0, 0.5, 0]} colliders={false}>
-                    <Character castShadow position={[0, -1.5, 0]} />
-                    <CapsuleCollider args={[1.05, 0.5]} />
-                </RigidBody>
+            <RigidBody ref={characterRef} type="kinematicPosition" friction={0.7} restitution={1} position={[0, 0.5, 0]} colliders={false}>
+                <Character castShadow position={[0, -1.5, 0]} />
+                <CapsuleCollider args={[1.05, 0.5]} />
+            </RigidBody>
 
-            </Physics>
+
 
         </>
     )

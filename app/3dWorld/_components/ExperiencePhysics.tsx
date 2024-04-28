@@ -16,19 +16,19 @@ const ExperiencePhysics = () => {
   }
   return (
     <>
-      <Physics debug>
-        <RigidBody type="fixed" >
-          <Plane />
-        </RigidBody>
 
-        <RigidBody ref={cubeRef} >
-          <Cube onClick={cubeHandleClick} castShadow position={[0, 5, 0]} scale={0.5} />
-        </RigidBody>
+      <RigidBody type="fixed" >
+        <Plane />
+      </RigidBody>
 
-        <RigidBody colliders="ball">
-          <Sphere castShadow position={[0, 10, 0]} />
-        </RigidBody>
-      </Physics></>
+      <RigidBody ref={cubeRef} >
+        <Cube onClick={cubeHandleClick} castShadow position={[0, 5, 0]} scale={0.5} />
+      </RigidBody>
+
+      <RigidBody colliders="ball">
+        <Sphere castShadow position={[0, 10, 0]} />
+      </RigidBody>
+    </>
   )
 }
 export default ExperiencePhysics
