@@ -7,10 +7,12 @@ import Experience2 from "./Experience2"
 import ExperiencePhysics from "./ExperiencePhysics"
 import { Vector3 } from "three"
 import ExperienceCharacter from "./ExperienceCharacter"
-import { useMemo } from "react"
+import ExperienceCharacter2 from "./ExperienceCharacter2"
+import { useMemo, useState } from "react"
 
 
 const World = () => {
+    const [state, setState] = useState(true)
     enum Controls {
         forward = 'forward',
         back = 'back',
@@ -26,18 +28,21 @@ const World = () => {
         { name: Controls.jump, keys: ['Space'] },
     ], [])
     return (
-        <KeyboardControls map={map}>
-            <Canvas shadows style={{ width: '100svw', height: '100svh' }}>
-                <Perf position="top-left" />
-                <OrbitControls />
-                <directionalLight intensity={2} castShadow position={[5, 5, 5]} />
-                <ambientLight />
-                {/* <Experience /> */}
-                {/* <Experience2 /> */}
-                {/* <ExperiencePhysics /> */}
-                <ExperienceCharacter />
-            </Canvas>
-        </KeyboardControls>
+        <>
+            <button onClick={() => setState(prev => !prev)}>click</button>
+            <KeyboardControls map={map}>
+                <Canvas shadows style={{ width: '100svw', height: '100svh' }}>
+                    <Perf position="top-right" />
+                    <OrbitControls />
+                    <directionalLight intensity={2} castShadow position={[5, 5, 5]} />
+                    <ambientLight />
+                    {/* <Experience /> */}
+                    {/* <Experience2 /> */}
+                    {/* <ExperiencePhysics /> */}
+                    {/* {state && <ExperienceCharacter />} */}
+                    {state && <ExperienceCharacter2 />}
+                </Canvas>
+            </KeyboardControls></>
     )
 }
 export default World

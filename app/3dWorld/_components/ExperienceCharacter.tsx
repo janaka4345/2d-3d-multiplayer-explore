@@ -1,4 +1,4 @@
-import { CapsuleCollider, Physics, RigidBody } from "@react-three/rapier"
+import { CapsuleCollider, Physics, type RapierRigidBody, RigidBody } from "@react-three/rapier"
 import Character from "./Character"
 import Plane from "./Plane"
 import Cube from "./Cube"
@@ -9,27 +9,43 @@ import { useEffect, useRef } from "react"
 
 
 const ExperienceCharacter = () => {
-    const characterRef = useRef<RigidBody>()
+    const characterRef = useRef<RapierRigidBody>()
+    // const [sub, get] = useKeyboardControls()
+    // const jumpPressed = useKeyboardControls(state => state)
     const [sub, get] = useKeyboardControls()
-    useFrame((state) => {
-        // const keys = getKeys()
-        // console.log(keys);
-
-
-    })
     useEffect(() => {
-
-        return sub(
+        const subUnsub = sub(
             (state) => state.forward,
             (pressed) => {
-                console.log('forward', pressed)
-                characterRef.current.setNextKinematicTranslation()
-
+                console.log('forward', pressed)//other way
             }
         )
+        return () => { subUnsub() }
 
 
     }, [])
+
+    useFrame((state) => {
+        console.log(get().forward);//one way
+
+
+        // const keys = getKeys()
+
+
+    })
+    // useEffect(() => {
+
+    //     return sub(
+    //         (state) => state.forward,
+    //         (pressed) => {
+    //             console.log('forward', pressed)
+    //             // characterRef.current.add
+
+    //         }
+    //     )
+
+
+    // }, [])
     return (
         <>
             <Physics debug >
