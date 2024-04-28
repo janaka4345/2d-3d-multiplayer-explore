@@ -8,6 +8,7 @@ import ExperiencePhysics from "./ExperiencePhysics"
 import { Vector3 } from "three"
 import ExperienceCharacter from "./ExperienceCharacter"
 import ExperienceCharacter2 from "./ExperienceCharacter2"
+import ExperienceCharacter3 from "./ExperienceCharacter3"
 import { useMemo, useState } from "react"
 
 
@@ -41,6 +42,7 @@ const World = () => {
                     {/* <ExperiencePhysics /> */}
                     {/* {state && <ExperienceCharacter />} */}
                     {state && <ExperienceCharacter2 />}
+                    {/* {state && <ExperienceCharacter3 />} */}
                 </Canvas>
             </KeyboardControls></>
     )
