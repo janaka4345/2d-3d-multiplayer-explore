@@ -1,8 +1,8 @@
 import { OrbitControls } from "@react-three/drei";
 // import Lights from "./Lights";
-import { Physics } from "@react-three/rapier";
+import { Physics, RigidBody } from "@react-three/rapier";
 import Plane from "@/app/3dWorld/_components/Plane";
-// import Player from "./Player";
+import Player from "./PlayerReal";
 import { useKeyboard } from "./useKeyboard";
 import { useMouseCapture } from "./useMouseCapture";
 import { Perf } from "r3f-perf";
@@ -37,9 +37,10 @@ export default function World() {
             {/* <color attach="background" args={["#000000"]} /> */}
             {/* <Lights /> */}
             <Physics debug>
-                <Plane />
+                <RigidBody type="fixed" >
+                    <Plane /></RigidBody>
                 {/* <Terrain /> */}
-                {/* <Player walk={0.2} jump={0.2} input={() => getInput(keyboard, mouse)} /> */}
+                <Player walk={0.2} jump={0.2} input={() => getInput(keyboard, mouse)} />
             </Physics>
         </>
     );
