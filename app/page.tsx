@@ -7,6 +7,7 @@ export default function Home() {
             <Link href='multiplayerRoom'>chat room</Link>
             <Link href='messageTest'>chat messageTest</Link>
             <Link href='3dWorld'>3d Character move</Link>
+            <Link href='PlayerWalk'>player walk</Link>
 
             <Canvas />
         </main>
