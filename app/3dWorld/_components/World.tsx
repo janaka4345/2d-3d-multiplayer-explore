@@ -1,17 +1,12 @@
 'use client'
+import { KeyboardControls, KeyboardControlsEntry } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
-import { KeyboardControls, KeyboardControlsEntry, OrbitControls } from "@react-three/drei"
-import { Perf } from 'r3f-perf'
-import Experience from "./Experience"
-import Experience2 from "./Experience2"
-import ExperiencePhysics from "./ExperiencePhysics"
-import { Vector3 } from "three"
-import ExperienceCharacter from "./ExperienceCharacter"
-import ExperienceCharacter2 from "./ExperienceCharacter2"
-import ExperienceCharacter3 from "./ExperienceCharacter3"
-import { useMemo, useState } from "react"
-import FlyControlsDem from "./FlyControlsDem"
 import { Physics } from "@react-three/rapier"
+import { Perf } from 'r3f-perf'
+import { useEffect, useMemo, useState } from "react"
+import FlyControlsDem from "./FlyControlsDem"
+import ExperienceCharacter from "./ExperienceCharacter3"
+import ExperienceCharacter4 from "./ExperienceCharacter4"
 
 
 const World = () => {
@@ -30,14 +25,32 @@ const World = () => {
         { name: Controls.right, keys: ['ArrowRight', 'KeyD'] },
         { name: Controls.jump, keys: ['Space'] },
     ], [])
+    useEffect(() => {
+        // console.log('cameraref', cameraRef.current);
+
+
+        return () => {
+
+        }
+    }, [])
+
+
     return (
         <>
             {/* <button onClick={() => setState(prev => !prev)}>click</button> */}
             <KeyboardControls map={map}>
-                <Canvas shadows style={{ width: '100svw', height: '100svh' }}>
+                <Canvas
+                    shadows
+                    style={{ width: '100svw', height: '100svh' }}
+                // camera={{ position: [0, 5, 0] }}
+                >
+
                     <Physics debug>
+
+
+
                         <Perf position="top-right" />
-                        <OrbitControls />
+                        {/* <OrbitControls /> */}
                         <directionalLight intensity={2} castShadow position={[5, 5, 5]} />
                         <ambientLight />
                         {/* <Experience /> */}
@@ -45,8 +58,10 @@ const World = () => {
                         {/* <ExperiencePhysics /> */}
                         {/* {state && <ExperienceCharacter />} */}
                         {/* {state && <ExperienceCharacter2 />} */}
-                        {/* {state && <ExperienceCharacter3 />} */}
-                        <FlyControlsDem /></Physics>
+                        {/* {state && <ExperienceCharacter />} */}
+                        {/* <FlyControlsDem />*/}
+                        {state && <ExperienceCharacter4 />}
+                    </Physics>
                 </Canvas>
             </KeyboardControls></>
     )
