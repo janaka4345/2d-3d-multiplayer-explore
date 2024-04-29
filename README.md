@@ -8,6 +8,9 @@
 -   tailwindcss
 -   shadecn ui
 -   typscript
+-   three js
+-   react three fiber
+-   rapier rs
 
 ## testing other methods
 
