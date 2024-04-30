@@ -1,10 +1,9 @@
+import Character from "@/app/3dWorld/_components/Character";
 import { useFrame, useThree } from "@react-three/fiber";
 import { CapsuleCollider, RigidBody, vec3 } from "@react-three/rapier";
 import { useRef } from "react";
-import { Raycaster, Quaternion, Vector3 } from "three";
-import quaternionFromNormal from "three-quaternion-from-normal";
-import { clamp, lerp } from "three/src/math/MathUtils";
-import Soldier from "./Soldier";
+import { Quaternion, Raycaster, Vector3 } from "three";
+import { clamp, lerp } from "three/src/math/MathUtils.js";
 
 export default function Player({
     walk = 3,
@@ -74,7 +73,7 @@ export default function Player({
         offset
             .fromArray(move)
             .normalize()
-            .multiply(running ? speed.clone().multiplyScalar(2.5) : speed)
+            .multiply(false ? speed.clone().multiplyScalar(2.5) : speed)
             .applyQuaternion(yaw);
         // .applyQuaternion(getSlope(ground));
         const v = velocity.multiply(drag).add(offset);
@@ -107,7 +106,8 @@ export default function Player({
         <boxGeometry args={[1, 1, 1]} />
       </mesh> */}
             <group ref={mesh}>
-                <Soldier position={[0, -1, 0]} />
+                {/* <Soldier position={[0, -1, 0]} /> */}
+                <Character rotation={[0, -Math.PI, 0]} position={[0, -1, 0]} scale={2} />
                 <CapsuleCollider args={[0.5, 0.5]} />
             </group>
         </RigidBody>

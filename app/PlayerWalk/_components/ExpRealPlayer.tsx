@@ -12,6 +12,7 @@ const Controls = {
     jump: "jump",
 };
 export default function Experience() {
+
     const map = useMemo(
         () => [
             { name: Controls.forward, keys: ["ArrowUp", "KeyW"] },
@@ -22,21 +23,24 @@ export default function Experience() {
         ],
         [],
     );
-    return (
-        <KeyboardControls map={map}>
-            <Canvas
-                style={{ width: '100svw', height: '100svh' }}
 
-                shadows={true}
-            // camera={{
-            //     fov: 40,
-            //     near: 0.2,
-            //     far: 200,
-            //     position: [5, 5, 5],
-            // }}
-            >
-                <World />
-            </Canvas>
-        </KeyboardControls>
+    return (
+        <>
+
+            <KeyboardControls map={map}>
+                <Canvas
+                    style={{ width: '100svw', height: '100svh' }}
+
+                    shadows={true}
+                // camera={{
+                //     fov: 40,
+                //     near: 0.2,
+                //     far: 200,
+                //     position: [5, 5, 5],
+                // }}
+                >
+                    <World />
+                </Canvas>
+            </KeyboardControls></>
     );
 }
