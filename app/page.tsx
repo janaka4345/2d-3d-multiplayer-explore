@@ -1,3 +1,4 @@
+
 import Canvas from '@/2dComponents/Canvas'
 import Link from 'next/link'
 
@@ -9,6 +10,7 @@ export default function Home() {
             <Link href='3dWorld'>3d Character move</Link>
             <Link href='PlayerWalk'>player walk</Link>
             <Link href='scrollStages'>scroll Stages</Link>
+            <Link href='portalWlkIn'>portal Wlk In</Link>
 
             <Canvas />
         </main>
