@@ -1,5 +1,5 @@
 'use client'
-import { Environment, KeyboardControls, KeyboardControlsEntry } from "@react-three/drei"
+import { Environment, KeyboardControls, KeyboardControlsEntry, OrbitControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { Physics } from "@react-three/rapier"
 import { Perf } from "r3f-perf"
@@ -26,6 +26,7 @@ const World = () => {
       <Canvas
         style={{ width: '100svh', height: '100svh' }}>
         <Perf />
+        <OrbitControls />
         <Physics debug>
           <ambientLight />
           <Environment preset="sunset" />
