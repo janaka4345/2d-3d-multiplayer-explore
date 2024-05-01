@@ -1,9 +1,10 @@
 import { useGLTF } from "@react-three/drei"
-import { MeshProps } from "@react-three/fiber"
-import { useEffect } from "react"
+import { MeshProps, PrimitiveProps } from "@react-three/fiber"
+import { Ref, forwardRef, useEffect } from "react"
+import { BufferGeometry, Material, Mesh, NormalBufferAttributes, Object3DEventMap } from "three"
 
 
-const Player = (props: MeshProps) => {
+const PlayerModel = (props: MeshProps, ref: Ref<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>) => {
     const player = useGLTF('./Character_Soldier.gltf')
     const WEAPONS = [
         "GrenadeLauncher",
@@ -34,7 +35,8 @@ const Player = (props: MeshProps) => {
     }, [])
 
     return (
-        <primitive object={player.scene} {...props} />
+        <primitive ref={ref} object={player.scene} {...props} />
     )
 }
+const Player = forwardRef(PlayerModel)
 export default Player
