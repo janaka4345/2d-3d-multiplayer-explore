@@ -1,21 +1,37 @@
 'use client'
-import { CameraControls, Environment } from "@react-three/drei"
+import { Environment, KeyboardControls, KeyboardControlsEntry } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { Physics } from "@react-three/rapier"
 import { Perf } from "r3f-perf"
 import Experience from "./Experience"
+import { useMemo } from "react"
 const World = () => {
+  enum Controls {
+    forward = 'forward',
+    back = 'back',
+    left = 'left',
+    right = 'right',
+    jump = 'jump',
+  }
+  const map = useMemo<KeyboardControlsEntry<Controls>[]>(() => [
+    { name: Controls.forward, keys: ['ArrowUp', 'KeyW'] },
+    { name: Controls.back, keys: ['ArrowDown', 'KeyS'] },
+    { name: Controls.left, keys: ['ArrowLeft', 'KeyA'] },
+    { name: Controls.right, keys: ['ArrowRight', 'KeyD'] },
+    { name: Controls.jump, keys: ['Space'] },
+  ], [])
   return (
-    <Canvas
-      style={{ width: '100svh', height: '100svh' }}>
-      <Perf />
-      <Physics debug>
-        <CameraControls />
-        <ambientLight />
-        <Environment preset="sunset" />
-        <Experience />
-      </Physics>
-    </Canvas>
+    <KeyboardControls map={map}>
+
+      <Canvas
+        style={{ width: '100svh', height: '100svh' }}>
+        <Perf />
+        <Physics debug>
+          <ambientLight />
+          <Environment preset="sunset" />
+          <Experience />
+        </Physics>
+      </Canvas></KeyboardControls>
   )
 }
 export default World

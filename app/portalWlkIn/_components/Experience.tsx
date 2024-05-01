@@ -1,18 +1,17 @@
 
-import Plane from "./Plane"
+import { RigidBody } from "@react-three/rapier"
 import Cube from "./Cube"
-import { CapsuleCollider, RigidBody } from "@react-three/rapier"
-import Player from "./Player"
+import Plane from "./Plane"
+import CharacterController from "./CharacterController"
 
 const Experience = () => {
   return (
     <>
+
       <RigidBody type="fixed"><Plane /></RigidBody>
       <RigidBody position={[5, 5, 0]}><Cube /></RigidBody>
-      <RigidBody type="dynamic" colliders={false} position={[0, 5, 0]}>
-        <Player position={[0, -1, 0]} />
-        <CapsuleCollider args={[0.5, 0.5]} />
-      </RigidBody>
+      <CharacterController />
+
     </>
 
   )
