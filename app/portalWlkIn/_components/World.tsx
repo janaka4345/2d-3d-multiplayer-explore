@@ -26,7 +26,7 @@ const World = () => {
       <Canvas
         style={{ width: '100svh', height: '100svh' }}>
         <Perf />
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         <Physics debug>
           <ambientLight />
           <Environment preset="sunset" />

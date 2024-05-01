@@ -12,7 +12,7 @@ const Experience = () => {
 
       <RigidBody type="fixed"><Plane /></RigidBody>
       <RigidBody position={[5, 5, 0]}><Cube /></RigidBody>
-      {/* <CharacterController /> */}
+      <CharacterController />
       <mesh>
         <planeGeometry args={[10, 10]} />
         <meshBasicMaterial >
