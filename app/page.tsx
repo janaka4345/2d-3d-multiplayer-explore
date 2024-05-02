@@ -11,6 +11,7 @@ export default function Home() {
             <Link href='PlayerWalk'>player walk</Link>
             <Link href='scrollStages'>scroll Stages</Link>
             <Link href='portalWlkIn'>portal Wlk In</Link>
+            <Link href='PlayerAnimWithMixamo'>Player Anim With Mixamo</Link>
 
             <Canvas />
         </main>
