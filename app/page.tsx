@@ -13,6 +13,7 @@ export default function Home() {
             <Link href='portalWlkIn'>portal Wlk In</Link>
             <Link href='PlayerAnimWithMixamo'>Player Anim With Mixamo</Link>
             <Link href='CleanWalk'>Clean Walk</Link>
+            <Link href='map'>Map</Link>
 
             <Canvas />
         </main>

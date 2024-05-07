@@ -11,10 +11,10 @@ const Experience = () => {
             <RigidBody type="fixed">
                 <Plane />
             </RigidBody>
-            {/* <PlayerController /> */}
+            <PlayerController />
             {/* <FemaleDance /> */}
             {/* <MaleTest /> */}
-            <MaleTest02 />
+            {/* <MaleTest02 /> */}
 
         </>
     )
