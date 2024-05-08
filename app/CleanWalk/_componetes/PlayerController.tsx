@@ -1,23 +1,50 @@
 import { useFrame } from "@react-three/fiber"
 import { CapsuleCollider, RapierRigidBody, RigidBody } from "@react-three/rapier"
 import { useEffect, useRef } from "react"
-import { BufferGeometry, Material, Mesh, NormalBufferAttributes, Object3DEventMap, Vector3 } from "three"
+import { BufferGeometry, Camera, Material, Mesh, NormalBufferAttributes, Object3DEventMap, Vector3 } from "three"
 import Player from "./Player"
 import { useKeyboardControls } from "@react-three/drei"
 
 const PlayerController = () => {
 
     const characterRigidbodyRef = useRef<RapierRigidBody>()
+    const playerMeshRef = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>()
 
     const [_, getKeys] = useKeyboardControls()
 
 
-    const playerMeshRef = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>()
     const currentPosition = new Vector3();
     const currentLookAt = new Vector3();
     const decceleration = new Vector3(-0.0005, -0.0001, -5.0);
     const acceleration = new Vector3(1, 0.125, 100.0);
     const velocity = new Vector3(0, 0, 0);
+
+    const calculateIdealOffset = () => {
+        const idealOffset = new Vector3(0, 20, -30);
+        idealOffset.applyQuaternion(playerMeshRef.current.quaternion);
+        idealOffset.add(playerMeshRef.current.position);
+        return idealOffset;
+    };
+
+    const calculateIdealLookat = () => {
+        const idealLookat = new Vector3(0, 10, 50);
+        idealLookat.applyQuaternion(playerMeshRef.current.quaternion);
+        idealLookat.add(playerMeshRef.current.position);
+        return idealLookat;
+    };
+
+    function updateCameraTarget(delta: number ,camera:Camera) {
+    const idealOffset = calculateIdealOffset();
+    const idealLookat = calculateIdealLookat();
+
+    const t = 1.0 - Math.pow(0.001, delta);
+
+    currentPosition.lerp(idealOffset, t);
+    currentLookAt.lerp(idealLookat, t);
+
+    camera.position.copy(currentPosition);
+  }
+
     useEffect(() => {
         console.log();
 
