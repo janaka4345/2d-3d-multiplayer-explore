@@ -17,6 +17,7 @@ export default function Home() {
             <Link href='map2'>Map 2</Link>
             <Link href='map3'>Map 3</Link>
             <Link href='map4'>Map 4</Link>
+            <Link href='map5'>Map 5</Link>
 
             <Canvas />
         </main>
