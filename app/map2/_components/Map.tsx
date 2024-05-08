@@ -3,8 +3,8 @@ import { useGLTF } from '@react-three/drei'
 
 
 const Map = () => {
-    const map = useGLTF('./map.glb')
-    // const map = useGLTF('./cityblend.glb')
+    // const map = useGLTF('./map.glb')
+    const map = useGLTF('./cityblend3.glb')
 
     return (
         <primitive object={map.scene} />

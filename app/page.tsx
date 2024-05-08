@@ -14,6 +14,9 @@ export default function Home() {
             <Link href='PlayerAnimWithMixamo'>Player Anim With Mixamo</Link>
             <Link href='CleanWalk'>Clean Walk</Link>
             <Link href='map'>Map</Link>
+            <Link href='map2'>Map 2</Link>
+            <Link href='map3'>Map 3</Link>
+            <Link href='map4'>Map 4</Link>
 
             <Canvas />
         </main>
