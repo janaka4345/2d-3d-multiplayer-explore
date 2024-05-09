@@ -29,7 +29,7 @@ const PlayerController = () => {
 
     // set current Action
     // let currAction = animations["idle"].clip;
-    let currAction;
+    let currAction: AnimationAction;
 
     let prevAction: AnimationAction;
 
