@@ -165,24 +165,7 @@ const PlayerController = () => {
         const back = getKeys().back
         const left = getKeys().left
         const right = getKeys().right
-        // console.log({ forward, back, left, right, jump });
 
-
-        // if (left) {
-        //     x -= 0.2
-        // }
-        // if (right) {
-        //     x += 0.2
-        // }
-        // if (forward) {
-        //     z -= 0.2
-        // }
-        // if (back) {
-        //     z += 0.2
-        // }
-        // if (jump) {
-        //     y += 0.2
-        // }
         characterState({ delta, forward, back, left, right, camera: state.camera });
         const idealLookat = calculateIdealLookat();
 
