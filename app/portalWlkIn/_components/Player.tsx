@@ -28,6 +28,8 @@ const PlayerModel = (props: MeshProps, ref: Ref<Mesh<BufferGeometry<NormalBuffer
             const isCurrentWeapon = wp === weapon;
             player.nodes[wp].visible = isCurrentWeapon;
         });
+        console.log(player);
+
 
         return () => {
 

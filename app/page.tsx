@@ -18,6 +18,8 @@ export default function Home() {
             <Link href='map3'>Map 3</Link>
             <Link href='map4'>Map 4</Link>
             <Link href='map5'>Map 5</Link>
+            <Link href='CleanWalkWithAnimation'>Clean Walk With  Animation</Link>
+            <Link href='PlayerWalkonMap'>Player Walk on Map</Link>
 
             <Canvas />
         </main>

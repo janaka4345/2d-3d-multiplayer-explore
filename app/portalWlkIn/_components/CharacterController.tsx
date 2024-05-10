@@ -22,6 +22,7 @@ const CharacterController = () => {
         const left = getKeys().left
         const right = getKeys().right
         // console.log({ forward, back, left, right, jump });
+        console.log(characterMeshRef.current);
 
 
         if (left) {
