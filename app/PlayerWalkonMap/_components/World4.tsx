@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 // import Lights from "./Lights";
 import { Physics, RigidBody } from "@react-three/rapier";
 import Plane from "@/app/3dWorld/_components/Plane";
@@ -8,6 +8,7 @@ import { useKeyboard } from "./useKeyboard";
 import { useMouseCapture } from "./useMouseCapture";
 import { Perf } from "r3f-perf";
 import Map from "./Map";
+// import { MapModel } from "./GltfMap";
 // import Terrain from "./Terrain";
 function getInput(keyboard, mouse) {
     // console.log("y");
@@ -40,16 +41,18 @@ export default function World() {
             <Perf position="top-right" />
             {/* <OrbitControls /> */}
             <directionalLight intensity={2} castShadow position={[5, 5, 5]} />
+            {/* <Environment preset="city" /> */}
             <ambientLight />
             {/* <axesHelper args={[2]} /> */}
             {/* <color attach="background" args={["#000000"]} /> */}
             {/* <Lights /> */}
-            <Physics debug>
+            <Physics >
                 {/* <RigidBody type="fixed" >
                     <Plane />
                 </RigidBody> */}
-                <RigidBody type="fixed" colliders='trimesh' >
+                <RigidBody type="fixed" >
                     <Map />
+                    {/* <MapModel /> */}
                 </RigidBody>
                 {/* <Terrain /> */}
                 {/* <Player walk={0.2} jump={0.2} input={() => getInput(keyboard, mouse)} /> */}
