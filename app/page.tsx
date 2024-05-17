@@ -20,6 +20,7 @@ export default function Home() {
             <Link href='map5'>Map 5</Link>
             <Link href='CleanWalkWithAnimation'>Clean Walk With  Animation</Link>
             <Link href='PlayerWalkonMap'>Player Walk on Map</Link>
+            <Link href='3dSphereWorld'>3dSphereWorld</Link>
 
             <Canvas />
         </main>
